@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#8b1bb1"><title>Insta Auto Publisher Mobile</title><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon48.png"><link rel="stylesheet" href="styles.css"></head><body>
+<div class="app">
+  <div class="topbar"><div class="brandrow"><div class="brand"><img src="icon128.png"><div><h1>Insta Auto Publisher</h1><small>v12 · Mobile Control</small></div></div><span id="serverPill" class="pill offline">Server offline</span></div></div>
+
+  <section id="view-dashboard" class="view active">
+    <div class="hero"><h2>📱 Mobile Dashboard</h2><p>Schedule, manage queue and open published posts from your phone.</p></div>
+    <div class="stats"><div class="stat"><strong id="statAccounts">0</strong><span>Accounts</span></div><div class="stat"><strong id="statScheduled">0</strong><span>Active</span></div><div class="stat"><strong id="statPublished">0</strong><span>Published</span></div><div class="stat"><strong id="statFailed">0</strong><span>Failed</span></div></div>
+    <div class="card"><div class="sectionhead"><div><h3>Next Post</h3><div id="nextPostMeta" class="sub">No scheduled job</div></div><div id="countdown" class="countdown">--:--</div></div></div>
+    <div class="card"><h3>Backend Connection</h3><div class="sub">Saved only on this phone.</div><div class="row field"><input id="backendUrl" class="input grow" placeholder="https://insta-auto-publisher-backend.onrender.com"><button id="saveBackend" class="btn purple">Save</button></div><div class="notice">Keep this backend URL private. Current backend APIs do not have dashboard login authentication.</div></div>
+    <div class="card"><div class="sectionhead"><div><h3>Upload Resume Queue</h3><div class="sub">Files are saved on this phone before upload, so interrupted uploads can resume when you reopen the app.</div></div><span id="pendingUploads" class="pill">0 pending</span></div><div id="uploadQueueMini" class="empty">No pending uploads.</div></div>
+  </section>
+
+  <section id="view-schedule" class="view">
+    <div class="card"><h3>New Auto Post</h3><div class="sub">Up to 100 videos · up to 15 independent Instagram account timelines.</div>
+      <div class="field"><div class="sectionhead"><label>Accounts</label><div><button id="selectAllAccounts" class="btn small ghost">All</button> <button id="clearAccounts" class="btn small ghost">Clear</button></div></div><div id="accountChips" class="accountchips"><span class="sub">No accounts.</span></div></div>
+      <div class="field"><label>Videos + Auto Captions</label><div class="filebox"><label for="files"><strong>⬆ Choose Videos + Caption Files</strong><div id="fileCount" class="filehint">Select .mp4/.mov and matching _caption or _caption.txt files together.</div></label><input id="files" type="file" multiple></div></div>
+      <div class="field"><label>Fallback / Common Caption</label><textarea id="fallbackCaption" class="textarea" placeholder="Used only when a video has no matching _caption file..."></textarea></div>
+      <div class="modegrid"><button id="modeRandom" class="mode active">🎲 Random start</button><button id="modeFixed" class="mode">⏱ Fixed start</button></div>
+      <div class="field"><label>Date</label><input id="scheduleDate" class="input" type="date"></div>
+      <div id="randomTimes" class="timegrid"><div class="field"><label>From</label><div id="fromTime" class="timegroup"></div></div><div class="field"><label>To</label><div id="toTime" class="timegroup"></div></div></div>
+      <div id="fixedTimes" class="field" style="display:none"><label>Start time</label><div id="fixedTime" class="timegroup"></div></div>
+      <div id="scheduleSummary" class="summary">Per account: 5 posts at 10-minute gaps → 1-hour break → repeat. Schedules automatically continue to the next day when needed.</div>
+      <button id="scheduleBtn" class="btn primary" style="width:100%;margin-top:12px">Save Files & Schedule ➜</button>
+      <div id="uploadProgressWrap" style="display:none"><div class="progress"><i id="uploadProgress"></i></div><div id="uploadProgressText" class="sub" style="margin-top:6px"></div></div>
+    </div>
+  </section>
+
+  <section id="view-queue" class="view">
+    <div class="card"><div class="sectionhead"><div><h3>Publishing Queue</h3><div class="sub">Jobs already on backend keep running when this mobile page is closed.</div></div><button id="retryFailed" class="btn small purple">Retry failed</button></div><div class="tools"><input id="queueSearch" class="input" placeholder="Search video / account"><select id="queueFilter" class="select"><option value="active">Active</option><option value="all">All</option><option value="scheduled">Scheduled</option><option value="processing">Processing</option><option value="ready">Ready</option><option value="retry_wait">Retry wait</option><option value="failed">Failed</option></select></div><div id="queueList"></div></div>
+  </section>
+
+  <section id="view-published" class="view">
+    <div class="card"><div class="sectionhead"><div><h3>Published Posts</h3><div class="sub">Open the exact published Reel/Post on Instagram.</div></div><button id="refreshPublished" class="btn small ghost">Refresh</button></div><div id="publishedList" class="publishedlist"></div></div>
+  </section>
+
+  <section id="view-accounts" class="view">
+    <div class="card"><h3>Connected Accounts</h3><div class="sub">Existing backend accounts appear automatically and encrypted recovery blobs are backed up on this phone.</div><div id="accountsList"></div></div>
+    <div class="card"><h3>Connect Instagram Account</h3><div class="sub">Enter the Meta token only here on your own mobile dashboard. It is sent to your backend, not stored as plaintext by this PWA.</div><div class="field"><label>Account label / @username</label><input id="accLabel" class="input" placeholder="rochak.tathya.fficial"></div><div class="field"><label>Instagram User ID</label><input id="accIgId" class="input" inputmode="numeric" placeholder="1784..."></div><div class="field"><label>Meta access token</label><input id="accToken" class="input" type="password" autocomplete="off" placeholder="Paste token"></div><button id="connectAccount" class="btn primary" style="width:100%;margin-top:12px">Connect Account</button></div>
+  </section>
+</div>
+<div id="toast" class="toast"></div>
+<nav class="bottomnav"><div><button class="navbtn active" data-view="dashboard"><b>⌂</b>Home</button><button class="navbtn" data-view="schedule"><b>⚡</b>Schedule</button><button class="navbtn" data-view="queue"><b>☷</b>Queue</button><button class="navbtn" data-view="published"><b>↗</b>Published</button><button class="navbtn" data-view="accounts"><b>♙</b>Accounts</button></div></nav>
+<script src="app.js"></script></body></html>

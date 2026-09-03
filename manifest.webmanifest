@@ -1,0 +1,14 @@
+{
+  "name": "Insta Auto Publisher Mobile",
+  "short_name": "Insta Publisher",
+  "description": "Mobile control panel for your Insta Auto Publisher backend.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#070b12",
+  "theme_color": "#8b1bb1",
+  "icons": [
+    {"src":"icon48.png","sizes":"48x48","type":"image/png"},
+    {"src":"icon128.png","sizes":"128x128","type":"image/png"}
+  ]
+}
