@@ -1,7 +1,7 @@
 {
-  "name": "Insta Auto Publisher Mobile",
+  "name": "Insta Auto Publisher Mobile Manager",
   "short_name": "Insta Publisher",
-  "description": "Mobile control panel for your Insta Auto Publisher backend.",
+  "description": "Full mobile control panel for Insta Auto Publisher.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

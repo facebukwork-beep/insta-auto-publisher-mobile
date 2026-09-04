@@ -1,25 +1,34 @@
-INSTA AUTO PUBLISHER MOBILE v12
-===============================
+INSTA AUTO PUBLISHER MOBILE v13 FULL MANAGER
+============================================
 
-This is a standalone mobile PWA/dashboard. It does NOT replace the Chrome extension or backend.
-It connects to your existing backend:
+This PWA uses the same backend as the PC Chrome extension:
 https://insta-auto-publisher-backend.onrender.com
 
-Recommended deployment: GitHub Pages
-1. Create a new GitHub repository, e.g. insta-auto-publisher-mobile.
-2. Upload ALL files from this folder to the repository root (do not upload the ZIP itself).
-3. GitHub repo -> Settings -> Pages -> Build and deployment -> Deploy from a branch.
-4. Branch: main, folder: /(root), Save.
-5. Open the generated https://...github.io/... URL on your phone.
-6. Enter your backend URL once. The app remembers it.
-7. Browser menu -> Add to Home Screen / Install App.
+Included:
+- Shared accounts and account recovery
+- Up to 15 accounts
+- Up to 100 videos per batch
+- Video + _caption / _caption.txt auto matching
+- Folder picker + manual file picker
+- Random Window, 24 Hours, Fixed Time (AM/PM)
+- Per-account 5 posts x 10-minute gaps, then 1-hour break, repeat
+- Automatic next-day continuation
+- Phone upload resume queue
+- Retry Uploads Now + Clear Pending Uploads
+- Queue search/status filters
+- Post Now / Delete / Retry failed / Delete all failed
+- Published Posts + direct Instagram link
+- Google Drive connect/reconnect + Drive test
+- Storage status: Postgres / Google Drive / restart-safe
+- Next-post live countdown
 
-Important behavior:
-- Jobs already uploaded/scheduled to the backend continue even when the phone/browser is closed.
-- Files that are still uploading from the phone are saved into a local resume queue first. If the phone/browser closes during upload, reopen the mobile app and it resumes.
-- On some mobile browsers, uploads cannot continue while the browser is fully closed. The app therefore persists the pending upload locally rather than losing it.
-- Do not share your backend URL publicly. The current backend APIs do not have user-login authentication.
+UPGRADE EXISTING GITHUB PAGES:
+1. Upload/replace ALL files from this folder in the existing insta-auto-publisher-mobile GitHub repo root.
+2. Commit changes.
+3. GitHub Pages will redeploy automatically.
+4. On phone, refresh the PWA/site. If the old version appears, fully close/reopen once; the v13 service worker uses a new cache.
 
-Scheduling pattern per account:
-5 posts at 10-minute gaps -> 1 hour break after the 5th -> repeat.
-Each account has its own independent timeline. If the timeline crosses midnight it automatically continues on the next date.
+Important:
+- Jobs already on the backend keep running when the phone/app is closed.
+- Phone files that have not finished uploading cannot reliably continue when the mobile browser is fully killed. They are stored in IndexedDB and resume when the PWA is reopened.
+- Backend exact-time execution can still be delayed if a free Render service sleeps. Durable Postgres/Drive prevents data loss, not service sleep.
