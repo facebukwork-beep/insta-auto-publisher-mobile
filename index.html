@@ -13,7 +13,7 @@
 <div class="app">
   <div class="topbar">
     <div class="brandrow">
-      <div class="brand"><img src="icon128.png"><div><h1>Insta Auto Publisher</h1><small>v13 · Full Mobile Manager</small></div></div>
+      <div class="brand"><img src="icon128.png"><div><h1>Insta Auto Publisher</h1><small>v14 · Pause/Resume + Catch-up Manager</small></div></div>
       <span id="serverPill" class="pill offline">Server offline</span>
     </div>
   </div>
@@ -29,6 +29,12 @@
 
     <div class="card">
       <div class="sectionhead"><div><h3>Next Post</h3><div id="nextPostMeta" class="sub">No scheduled job</div></div><div id="countdown" class="countdown">--:--</div></div>
+    </div>
+
+    <div class="card">
+      <div class="sectionhead"><div><h3>Global Posting Control</h3><div id="schedulerDetailMobile" class="sub">Checking scheduler…</div></div><span id="schedulerPillMobile" class="pill">Checking</span></div>
+      <div class="jobactions"><button id="pauseAllMobile" class="btn red">⏸ Pause All Posting</button><button id="resumeAllMobile" class="btn purple">▶ Resume Posting</button></div>
+      <div class="notice">Pause keeps every queued job. Resume shifts/re-spaces old overdue jobs so they do not publish all at once after the backend wakes.</div>
     </div>
 
     <div class="card">
