@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: insta-auto-publisher
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: GRAPH_API_VERSION
+        value: v23.0
+      - key: REQUIRE_RESTART_SAFE_STORAGE
+        value: "true"
+      - key: KEEP_MEDIA_AFTER_PUBLISH_HOURS
+        value: "24"
+      # IMPORTANT: Keep your EXISTING APP_SECRET_KEY in Render. Do not regenerate it.
+      # Add DATABASE_URL + S3/R2 variables manually in Render Environment.
