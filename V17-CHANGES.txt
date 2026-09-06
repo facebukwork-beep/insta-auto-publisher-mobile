@@ -1,0 +1,6 @@
+v17 Mobile Full Manager
+- compatible with backend v14.7 follower-baseline fix
+- shows current followers, gain, durable baseline, tracking-since date, reach, profile views, media count
+- preserves additive multi-location file selection and concurrent background upload queues
+- preserves Monthly Smart 24H, Random/24 Hours/Fixed modes, pause/resume, queue controls, published links, Google Drive status, account recovery
+- no backend change required when v14.7 is already live

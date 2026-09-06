@@ -4,3 +4,11 @@
 /* v13 full mobile manager additions */
 .systemgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.systemitem{background:#09111d;border:1px solid #293752;border-radius:13px;padding:10px}.systemitem span{display:block;color:var(--muted);font-size:10px}.systemitem strong{display:block;font-size:14px;margin-top:3px}.modegrid.three{grid-template-columns:repeat(3,1fr)}.folderrow{display:flex;align-items:center;gap:9px;margin-top:8px;flex-wrap:wrap}.folderbtn{display:inline-block;cursor:pointer}.uploaderror{border:1px solid #813246;background:#431824;color:#ff9daf;padding:10px 11px;border-radius:12px;font-size:12px;margin:8px 0}.errtxt{color:#ff9daf!important}.jobactions a.btn{display:inline-flex;align-items:center;text-decoration:none}
 @media(max-width:520px){.modegrid.three{grid-template-columns:1fr}.systemgrid{grid-template-columns:1fr 1fr}}
+
+/* v15 Monthly Smart */
+.modegrid.four{grid-template-columns:repeat(2,1fr)}#monthlySummary.good{border-color:#245b3d;background:#0d281a;color:#a1f1bd}#monthlySummary.warn{border-color:#6a4c1f;background:#2b210f;color:#ffe2a1}@media(min-width:650px){.modegrid.four{grid-template-columns:repeat(4,1fr)}}
+
+.miniStats{grid-template-columns:repeat(3,minmax(0,1fr));margin:10px 0}.miniStats .stat{padding:12px}.miniStats .stat strong{font-size:24px}
+.inset{margin-top:12px;background:#09111d;border:1px solid #27334b}
+#view-published .select{width:100%}
+@media(max-width:520px){.miniStats{grid-template-columns:repeat(2,minmax(0,1fr))}}

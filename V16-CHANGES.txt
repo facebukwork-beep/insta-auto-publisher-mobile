@@ -1,0 +1,5 @@
+v16
+- additive file/folder selection
+- concurrent queued upload batches
+- per-account published Today/Total/Since
+- follower growth panel (backend v14.6 optional)

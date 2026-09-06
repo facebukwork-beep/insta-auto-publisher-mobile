@@ -13,7 +13,7 @@
 <div class="app">
   <div class="topbar">
     <div class="brandrow">
-      <div class="brand"><img src="icon128.png"><div><h1>Insta Auto Publisher</h1><small>v14 · Pause/Resume + Catch-up Manager</small></div></div>
+      <div class="brand"><img src="icon128.png"><div><h1>Insta Auto Publisher</h1><small>v17 · Baseline Analytics + Full Manager</small></div></div>
       <span id="serverPill" class="pill offline">Server offline</span>
     </div>
   </div>
@@ -67,7 +67,7 @@
   </section>
 
   <section id="view-schedule" class="view">
-    <div class="card"><h3>New Auto Post</h3><div class="sub">Up to 100 videos · up to 15 independent Instagram account timelines.</div>
+    <div class="card"><h3>New Auto Post</h3><div class="sub">Normal: up to 100 videos · Monthly Smart: up to 1,860 videos · up to 15 accounts.</div>
       <div class="field"><div class="sectionhead"><label>Accounts</label><div><button id="selectAllAccounts" class="btn small ghost">All</button> <button id="clearAccounts" class="btn small ghost">Clear</button></div></div><div id="accountChips" class="accountchips"><span class="sub">No accounts.</span></div></div>
 
       <div class="field"><label>Videos + Auto Captions</label>
@@ -77,11 +77,16 @@
 
       <div class="field"><label>Fallback / Common Caption</label><textarea id="fallbackCaption" class="textarea" placeholder="Used only when a video has no matching _caption file..."></textarea></div>
 
-      <div class="modegrid three"><button id="modeRandom" class="mode active">🎲 Random window</button><button id="mode24" class="mode">🕛 24 Hours</button><button id="modeFixed" class="mode">⏱ Fixed time</button></div>
+      <div class="modegrid four"><button id="modeRandom" class="mode active">🎲 Random window</button><button id="mode24" class="mode">🕛 24 Hours</button><button id="modeFixed" class="mode">⏱ Fixed time</button><button id="modeMonthly" class="mode">📅 Monthly Smart</button></div>
       <div class="field"><label>Date</label><input id="scheduleDate" class="input" type="date"></div>
       <div id="randomTimes" class="timegrid"><div class="field"><label>From</label><div id="fromTime" class="timegroup"></div></div><div class="field"><label>To</label><div id="toTime" class="timegroup"></div></div></div>
       <div id="fixedTimes" class="field" style="display:none"><label>Start time</label><div id="fixedTime" class="timegroup"></div></div>
       <div id="mode24Note" class="summary" style="display:none">24 Hours mode uses the full selected day as the possible first-post window for each account.</div>
+      <div id="monthlyFields" style="display:none">
+        <div class="split"><div class="field"><label>Start date</label><input id="monthlyStart" class="input" type="date"></div><div class="field"><label>End date</label><input id="monthlyEnd" class="input" type="date"></div></div>
+        <div class="field"><label>Videos / day / account</label><input id="monthlyDaily" class="input" type="number" min="1" max="60" value="50"></div>
+        <div id="monthlySummary" class="summary">Select dates and videos to build a monthly plan.</div>
+      </div>
       <div id="scheduleSummary" class="summary">Per account: 5 posts at 10-minute gaps → 1-hour break → repeat. If needed, the timeline automatically continues to the next day.</div>
       <button id="scheduleBtn" class="btn primary" style="width:100%;margin-top:12px">Save Files & Schedule ➜</button>
       <div id="uploadProgressWrap" style="display:none"><div class="progress"><i id="uploadProgress"></i></div><div id="uploadProgressText" class="sub" style="margin-top:6px"></div></div>
@@ -97,7 +102,17 @@
   </section>
 
   <section id="view-published" class="view">
-    <div class="card"><div class="sectionhead"><div><h3>Published Posts</h3><div class="sub">Open the exact published Reel/Post on Instagram.</div></div><button id="refreshPublished" class="btn small ghost">Refresh</button></div><div id="publishedList" class="publishedlist"></div></div>
+    <div class="card">
+      <div class="sectionhead"><div><h3>Published Posts & Growth</h3><div class="sub">Filter by account and see today/total published counts.</div></div><button id="refreshPublished" class="btn small ghost">Refresh exact stats</button></div>
+      <div class="field"><label>Account</label><select id="publishedAccountFilter" class="select"><option value="all">All accounts</option></select></div>
+      <div class="stats miniStats"><div class="stat"><strong id="publishedTodayCount">0</strong><span>Today</span></div><div class="stat"><strong id="publishedTotalCount">0</strong><span>Total</span></div><div class="stat"><strong id="publishedSince">—</strong><span>Since</span></div></div>
+      <div class="card inset">
+        <div class="sectionhead"><div><h3>Follower Growth</h3><div class="sub">Select one account. Gain is measured from the durable baseline saved by backend v14.7+.</div></div><button id="refreshGrowth" class="btn small ghost">Refresh</button></div>
+        <div class="stats miniStats"><div class="stat"><strong id="followersCurrent">—</strong><span>Followers</span></div><div class="stat"><strong id="followersGain">—</strong><span>Gain</span></div><div class="stat"><strong id="followersBaseline">—</strong><span>Baseline</span></div><div class="stat"><strong id="trackingSince">—</strong><span>Tracking since</span></div><div class="stat"><strong id="reachToday">—</strong><span>Reach today</span></div><div class="stat"><strong id="profileViewsToday">—</strong><span>Profile views</span></div><div class="stat"><strong id="mediaCountCurrent">—</strong><span>Media count</span></div></div>
+        <div id="growthStatus" class="sub">Select one account to see follower growth.</div>
+      </div>
+      <div id="publishedList" class="publishedlist"></div>
+    </div>
   </section>
 
   <section id="view-accounts" class="view">
