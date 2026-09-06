@@ -1,0 +1,9 @@
+/* v19 Smart Performance Suite additions */
+.modegrid.five{grid-template-columns:repeat(2,1fr)}
+.featurechecks{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}
+.featurecheck{display:flex;gap:10px;align-items:flex-start;background:#09111d;border:1px solid #2e3d57;border-radius:13px;padding:11px}
+.featurecheck input{width:18px;height:18px;margin-top:2px;accent-color:#8e47ff}
+.featurecheck span,.featurecheck strong,.featurecheck small{display:block}.featurecheck strong{font-size:12px}.featurecheck small{color:var(--muted);font-size:10px;margin-top:3px;line-height:1.4}
+.calendarMobile{max-height:360px;overflow:auto}.calmobile{display:flex;gap:9px;align-items:center;border:1px solid #2c3951;background:#0a121d;border-radius:13px;padding:10px;margin-top:8px}.calmobile.paused{border-color:#6a4c1f;background:#21180c}.caltime{font-weight:950;color:#e0ceff;min-width:66px}.calfile{font-size:11px;color:#c5cfde;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:220px}.accountpause{background:#4b1688}.accountpause.paused{background:#644716;color:#ffe28b}
+.bestHoursMobile{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.bestHourChip{border:1px solid #4d3c76;background:#171128;border-radius:999px;padding:7px 10px;font-size:11px;font-weight:900;color:#e5d6ff}.performanceMobile{max-height:420px;overflow:auto}.perfmobile{border:1px solid #2c3951;background:#0a121d;border-radius:13px;padding:10px;margin-top:8px}.perfgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:8px}.perfgrid span{background:#0e1928;border:1px solid #26364e;border-radius:8px;padding:6px;text-align:center;font-size:9px;color:var(--muted)}.perfgrid strong{display:block;color:#fff;font-size:11px}
+@media(min-width:650px){.modegrid.five{grid-template-columns:repeat(5,1fr)}.featurechecks{grid-template-columns:1fr 1fr}}
