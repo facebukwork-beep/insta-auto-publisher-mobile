@@ -1,22 +1,14 @@
 {
-  "name": "Insta Auto Publisher Mobile v17",
+  "name": "Insta Auto Publisher Mobile v19",
   "short_name": "Insta Publisher",
-  "description": "Mobile full manager with durable follower-baseline analytics, additive uploads, per-account published stats, Monthly Smart 24H, pause/resume, Google Drive media and durable queue management.",
-  "start_url": "./index.html",
+  "description": "Mobile Instagram auto publisher with next-24h calendar, per-account pause/resume, best-time scheduling, performance dashboard, duplicate protection, append-to-existing scheduling and direct Google Drive uploads.",
+  "start_url": "./index.html?v=19.2",
   "scope": "./",
   "display": "standalone",
   "background_color": "#070b12",
   "theme_color": "#8b1bb1",
   "icons": [
-    {
-      "src": "icon48.png",
-      "sizes": "48x48",
-      "type": "image/png"
-    },
-    {
-      "src": "icon128.png",
-      "sizes": "128x128",
-      "type": "image/png"
-    }
+    {"src":"icon48.png","sizes":"48x48","type":"image/png"},
+    {"src":"icon128.png","sizes":"128x128","type":"image/png"}
   ]
 }
